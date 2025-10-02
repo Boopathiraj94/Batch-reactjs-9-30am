@@ -1,6 +1,7 @@
 .card{
     border: 2px solid;
     width: 300px;
+    position: relative;
 }
 
 .card>img{
@@ -11,3 +12,10 @@
     display: flex;
     gap: 20px;
 }
+
+.card .sold-img{
+    position: absolute;
+    width: 80px;
+    right: 0;
+}
+
