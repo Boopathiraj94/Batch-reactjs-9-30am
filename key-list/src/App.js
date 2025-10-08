@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+ 
 
 function App(props) {
 
@@ -15,7 +14,7 @@ function App(props) {
 
  console.log(filterMobiles)
 
- if(filterMobiles && filterMobiles.length == 0){
+ if(filterMobiles && filterMobiles.length === 0){
   return (
       <h1>No Record Found</h1>
   )

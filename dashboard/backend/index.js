@@ -36,9 +36,9 @@ app.get("/v1/customer/:id", async (req, res) => {
 
 // get all customers
 
-app.get("/v1/customer", async (req, res) => {
+app.get("/v1/products", async (req, res) => {
 
-    const customers = await customerModel.find();
+    const customers = await productModel.find();
 
     if (customers) {
         return res.status(200).send({ status: true, message: "records", response: customers })
@@ -52,20 +52,20 @@ app.get("/v1/customer", async (req, res) => {
 // add customer datas
 app.post("/v1/products", (req, res) => {
     const products = new productModel(req.body)
-    let saved = products.save()
+    let saved = products.save() 
     if (saved) {
-        return res.status(200).send({ status: true, message: "products Saved", })
+        return res.status(200).send({ status: true, message: "Employee saved", })
     } else {
         return res.status(200).send({ status: false, message: "products not save", })
     }
 })
 
 // updated
-app.put("/v1/customer", async (req, res) => {
+app.put("/v1/products", async (req, res) => {
 
     // [1,3,5,6] => [5,7,9,0]
     const users = req.body;
-
+// console.log(users)
     if (users.length >= 1) {
         let upd;
         for (const element of users) {
@@ -84,9 +84,9 @@ app.put("/v1/customer", async (req, res) => {
 
     } else {
 
-        const updated = await customerModel.findByIdAndUpdate(
-            { _id: Object(req.body.id) },
-            { name: req.body.name, age: req.body.age, address: req.body.address, email: req.body.email },
+        const updated = await productModel.findByIdAndUpdate(
+            { _id: Object(req.body._id) },
+            { employeeName: req.body.employeeName, employeeAge: req.body.employeeAge, employeeAddress: req.body.employeeAddress, employeePhone: req.body.employeePhone },
             { new: true }
 
         )
@@ -108,13 +108,13 @@ app.put("/v1/customer", async (req, res) => {
 
 // delete 
 
-app.delete("/v1/customer", async (req, res) => {
+app.delete("/v1/products", async (req, res) => {
 
     console.log(req.body)
     const user = req.body;
     if (user) {
 
-        const deleted = await customerModel.deleteOne({ _id: Object(user.id) })
+        const deleted = await productModel.deleteOne({ _id: Object(user.id) })
         if (deleted) {
             return res.status(200).send({ status: true, message: "Record Deleted Successfully" })
         } else {
