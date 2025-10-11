@@ -1,0 +1,73 @@
+.sidemenu {
+    border: 2px solid;
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    background: #040b14;
+}
+
+.sidemenu .profile-img {
+    height: 250px;
+    border: 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 58px;
+    border-bottom: 1px solid white;
+}
+
+.sidemenu .profile-img img {
+    width: 120px;
+    border: 5px solid #149ddd;
+    border-radius: 50%;
+}
+
+.sidemenu .profile-img .social-icon {
+
+    width: 250px;
+    padding-left: 10px;
+
+}
+
+.sidemenu .profile-img .social-icon .fa {
+    border: 2px solid;
+    padding: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #687377;
+    color: white;
+}
+
+.sidemenu nav ul {
+    margin-left: 15px;
+}
+
+.sidemenu nav ul li {
+    padding: 18px 5px;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+
+.sidemenu nav ul li .fa {
+    margin-right: 10px;
+    font-size: 25px;
+    color: white;
+
+}
+
+.sidemenu nav ul li:hover .fa {
+    color: #149ddd;
+
+}
+
+.sidemenu>h1 {
+    color: white;
+    position: absolute;
+    width: 150px;
+    bottom: 0;
+    text-align: center;
+}

@@ -1,0 +1,43 @@
+.banner {
+    border: 2px solid;
+    position: relative;
+    left: 15%;
+    width: 85%;
+    height: 100vh;
+    background: url('../assets/hero-bg.jpg') no-repeat;
+    background-position: center;
+
+}
+
+.banner h1 {
+    position: absolute;
+    font-size: 50px;
+    color: white;
+    top: 50%;
+    padding-left: 20px;
+}
+
+.banner p {
+    position: absolute;
+    font-size: 22px;
+    color: white;
+    top: 58%;
+    padding-left: 20px;
+    border-right: 3px solid;
+    width: 300px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    animation: typing 5s steps(22) infinite , blink 0.5s infinite ;
+}
+
+@keyframes typing {
+    from{
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    from{
+        border-right: transparent;
+    }
+}

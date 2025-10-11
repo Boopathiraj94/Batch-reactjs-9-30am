@@ -10,46 +10,96 @@ const Employees = () => {
         gender: "",
         salary: 0.00,
     })
-
     const [emplists, setEmplists] = useState([])
+    const [editIndex,setEditIndex] = useState(null)
 
-    // console.log(empdetails)
+    const [errors,setErrors]= useState({
+        nameError:"",
+        AgeError:"",
+        DesignationError:"",
+        AddressError:"",
+        GenderError:"",
+    })
+
+
 
     let handleSave = (e) => {
         e.preventDefault()
-        // empdetails.name === ""
-        // {
-        //     setErros((prev)=> {... errors , name: "name cann't be empty"})
-        // }
+        
+        if(editIndex === null){
 
-        setEmplists((prev) => [...prev, empdetails])
+            if(empdetails.name === ""){
+                setErrors({ ...errors, nameError: "Employee Name cann't be Empty..." })
+                return
+            }
 
-        console.log("Employee List => ", emplists)
+                setEmplists(prev => [...prev, empdetails])
+                setEmpdetails({
+                    name: "",
+                    age: 0,
+                    designation: "",
+                    address: "",
+                    gender: "",
+                    salary: 0.00,
+                })
+        }else{
+            console.log("update")
 
-        // localStorage.setItem("EmpList", JSON.stringify(emplists))
+        const list=  emplists.map((ele,index)=> 
+        index === editIndex ? 
+        { ...ele , 
+            ...empdetails
+        }
+        : ele
+         )
+
+         console.log(list)
+   
+
+        setEmpdetails(list)
+        }
+       
+    }
+
+    let handleDelete = (i) => {
+       
+       const filteredList =   emplists.filter((_, index)=> index !== i )
+       setEmplists(filteredList);
+    }
+
+    let handleUpdate = (i) => {
+         setEmpdetails(emplists[i])
+         setEditIndex(i)
     }
 
     let list;
-    if (emplists && emplists.length > 1) {
+    if (emplists && emplists.length >= 1) {
 
         list = emplists.map((ele, i) => {
             if (ele.gender === "Male") {
-                return <tr key={i} style={{ backgroundColor: "blue" }}>
+                return <tr key={i} style={{ color: "blue" }}>
                     <td>{i + 1}</td>
                     <td>{ele.name}</td>
                     <td>{ele.age}</td>
                     <td>{ele.designation}</td>
                     <td>{ele.address}</td>
                     <td>{ele.salary}</td>
+                   <td>  <button onClick={() => handleUpdate(i)}>Update</button>
+                    <button onClick={() => handleDelete(i)}>Delete</button>
+                    </td>
                 </tr>
             } else {
-                return <tr key={i} style={{ backgroundColor: "red" }}>
+                return <tr key={i} style={{ color: "red" }}>
                     <td>{i + 1}</td>
                     <td>{ele.name}</td>
                     <td>{ele.age}</td>
                     <td>{ele.designation}</td>
                     <td>{ele.address}</td>
                     <td>{ele.salary}</td>
+                    <td>
+                        <button onClick={() => handleUpdate(i)}>Update</button>
+                        <button onClick={() => handleDelete(i)}>Delete</button>
+                    </td>
                 </tr>
             }
 
@@ -66,14 +116,16 @@ const Employees = () => {
                 <input
                     type='text'
                     placeholder='Employee Name'
+                    value={empdetails.name}
                     onChange={(e) => setEmpdetails({ ...empdetails, name: e.target.value })}
                 />
-                {/* <span>{eo.name}</span> */}
+               <span>{errors.nameError}</span>
                 <br />
                 <input
                     type='radio'
                     placeholder='Employee Name'
                     value="Male"
+                    name='gender'
                     onClick={(e) => setEmpdetails({ ...empdetails, gender: e.target.value })}
                 />Male
                 <br />
@@ -81,30 +133,35 @@ const Employees = () => {
                     type='radio'
                     placeholder='Employee Name'
                     value="Female"
+                     name='gender'
                     onChange={(e) => setEmpdetails({ ...empdetails, gender: e.target.value })}
                 />Female
                 <br />
                 <input
                     type='number'
                     placeholder='Employee Age'
+                    value={empdetails.age}
                     onChange={(e) => setEmpdetails({ ...empdetails, age: parseInt(e.target.value) })}
                 />
                 <br />
                 <input
                     type='text'
                     placeholder='Designation'
+                    value={empdetails.designation}
                     onChange={(e) => setEmpdetails({ ...empdetails, designation: e.target.value })}
                 />
                 <br />
                 <input
                     type='text'
                     placeholder='Address'
+                    value={empdetails.address}
                     onChange={(e) => setEmpdetails({ ...empdetails, address: e.target.value })}
                 />
                 <br />
                 <input
                     type='number'
                     placeholder='Salary'
+                    value={empdetails.salary}
                     onChange={(e) => setEmpdetails({ ...empdetails, salary: parseFloat(e.target.value) })}
                 />
                 <br />
@@ -120,6 +177,7 @@ const Employees = () => {
                         <th>Designation</th>
                         <th>Address</th>
                         <th>Salary</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
