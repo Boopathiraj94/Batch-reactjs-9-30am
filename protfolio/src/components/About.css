@@ -102,3 +102,8 @@
     position: absolute;
     background: #185151;
 }
+
+.category{
+    border: 2px solid red;
+    height: 70vh;
+}

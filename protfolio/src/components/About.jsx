@@ -1,34 +1,37 @@
 import React from 'react'
-import imgss from '../assets/hero-bg.jpg'
+
 import './About.css'
+import Tea from './Tea'
+import Coffee from './Coffee'
+import { Routes, Route, Link } from 'react-router-dom';
 const About = () => {
-    return (
-        <>
-            <div className="about">
-                   
-                   <div className="about-header">
-                     <h1>About</h1>
-                     <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                   </div>
+  return (
+    <>
+      <div className="about">
 
-                  <div className="css">
-                    <div className="css-per"></div>
-                  </div>
+        <div className="about-header">
+          <h1>About</h1>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
 
-                  <div className="box">
-                    <img src={imgss} alt="" />
+        <ul>
+          <Link to='/about/tea'><li>Tea</li> </Link>
+          <Link to='/about/coffee'><li>Coffee</li></Link>
+        </ul>
 
-                    <div className="blur-box">
-                            <button>Add To Cart</button>
-                    </div>
-                     <div className="blur-box1">
-                            <button>Add To Cart</button>
-                    </div>
-                  </div>
+        
+          <Routes >
+            
+              <Route path='tea' element={<Tea />} />
+              <Route path='coffee' element={<Coffee />} />
+           
+          </Routes>
+      
 
-            </div>
-        </>
-    )
+
+      </div>
+    </>
+  )
 }
 
 export default About

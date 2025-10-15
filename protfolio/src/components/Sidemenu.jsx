@@ -2,6 +2,8 @@ import React from 'react'
 import './Sidemenu.css';
 import pro_img from '../assets/my-profile-img.jpg';
 
+import { Link } from 'react-router-dom'
+
 const Sidemenu = () => {
     return (
         <>
@@ -21,21 +23,21 @@ const Sidemenu = () => {
 
                 <nav>
                     <ul>
-                        <li> <i class="fa fa-home" aria-hidden="true"></i>
-                            Home</li>
-                        <li><i class="fa fa-user-o" aria-hidden="true"></i>
- About</li>
+                        <Link to="/">  <li> <i class="fa fa-home" aria-hidden="true"></i>
+                            Home</li></Link>
+                        <Link to="/about">  <li><i class="fa fa-user-o" aria-hidden="true"></i>
+                            About</li></Link>
                         <li><i class="fa fa-file-o" aria-hidden="true"></i>
-Resume</li>
+                            Resume</li>
                         <li><i class="fa fa-picture-o" aria-hidden="true"></i>
-Portfolio</li>
+                            Portfolio</li>
                         <li><i class="fa fa-envelope-o" aria-hidden="true"></i>
-Contact</li>
+                            Contact</li>
                     </ul>
                 </nav>
 
                 <h1>Denis</h1>
-
+{/* https://api.frankfurter.app/latest?from=USD&to=EUR */}
             </div>
         </>
     )
