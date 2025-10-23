@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    border: 2px solid;
+   position: fixed;
+   width: 100%;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header ul li {
+    list-style: none;
+    cursor: pointer;
+}
+
+main {
+    border: 2px solid red;
+    height: 100vh;
+}
+
+section {
+    border: 2px solid green;
+    height: 100vh;
+}
+
+.service {
+    border: 2px solid blue;
+    height: 100vh;
+}
+
+.container{
+    padding: 2rem;
+}
